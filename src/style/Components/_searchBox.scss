@@ -1,0 +1,51 @@
+.searchbox {
+  width: 60%;
+  margin: $l-size auto;
+  display: flex;
+  flex-direction: column;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: 5px;
+    outline: none;
+    background: $light-color;
+    font-size: 1.7rem;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+    color: #333;
+    font-family: inherit;
+  }
+
+  &__btn {
+    margin-top: $sm-size;
+    padding: 5px;
+    background: $dark-color;
+    color: $light-color;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: transform 0.1s ease;
+
+    &:active {
+      transform: translateY(1.5px);
+    }
+  }
+}
+
+.clear {
+  background: $light-color;
+  color: #333;
+}
+
+.error {
+  background: $danger-color;
+  color: $light-color;
+  font-style: italic;
+  margin-top: $l-size;
+  align-self: center;
+  padding: 5px;
+}

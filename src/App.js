@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./Components/Navbar/Navbar";
+import SearchBox from "./Components/Searchbox/SearchBox";
+import Users from "./Components/Users/Users";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  state = {
+    users: [],
+    loading: false,
+    searchUser: ""
+  };
+
+  handelClear = () => {
+    this.setState({ users: [] });
+  };
+
+  hadnelSubmit = async value => {
+    this.setState({ loading: true, searchUser: "" });
+    const response = await fetch(
+      `https://api.github.com/search/users?q=${value}`
+    );
+    const data = await response.json();
+    this.setState({ loading: false, users: data.items });
+  };
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <SearchBox
+          hadnelSubmit={this.hadnelSubmit}
+          handelClear={this.handelClear}
+        />
+        <Users users={this.state.users} isLoading={this.state.loading} />
+      </div>
+    );
+  }
 }
 
-export default App;
+//https://api.github.com/users

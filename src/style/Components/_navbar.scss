@@ -1,0 +1,21 @@
+.navBar {
+  background: $primary-color;
+  color: $light-color;
+  padding: $sm-size;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+
+    &__logo {
+      width: 40px;
+      height: 40px;
+      fill: white;
+      margin-right: $sm-size;
+    }
+
+    &__title {
+      font-weight: 500;
+    }
+  }
+}
